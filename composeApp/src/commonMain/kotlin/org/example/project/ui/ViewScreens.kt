@@ -63,12 +63,12 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import kotlinx.coroutines.delay
-import migrationtest.composeapp.generated.resources.Res
-import migrationtest.composeapp.generated.resources.broken_image
-import migrationtest.composeapp.generated.resources.cancel
-import migrationtest.composeapp.generated.resources.cursive_2
-import migrationtest.composeapp.generated.resources.loading_img
-import migrationtest.composeapp.generated.resources.micro
+import moviescout.composeapp.generated.resources.Res
+import moviescout.composeapp.generated.resources.broken_image
+import moviescout.composeapp.generated.resources.cancel
+import moviescout.composeapp.generated.resources.cursive_2
+import moviescout.composeapp.generated.resources.loading_img
+import moviescout.composeapp.generated.resources.micro
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
