@@ -29,8 +29,6 @@ data class MoviesUiState(
 
 expect fun shareMovie(movieTitle: String, movieDescription: String)
 
-//expect fun sleepMillis(millis: Long)
-
 class MoviesViewModel(private val moviesRepository: MoviesRepository) {
 
     private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)

@@ -9,11 +9,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -43,7 +41,6 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -53,24 +50,16 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
-import kotlinx.coroutines.delay
 import moviescout.composeapp.generated.resources.Res
 import moviescout.composeapp.generated.resources.broken_image
 import moviescout.composeapp.generated.resources.cancel
 import moviescout.composeapp.generated.resources.cursive_2
 import moviescout.composeapp.generated.resources.loading_img
-import moviescout.composeapp.generated.resources.micro
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun MoviesListAndDetail(
@@ -132,7 +121,7 @@ fun TopMovieListItem(
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-/*private*/ fun MoviesListItem(
+fun MoviesListItem(
     movie: DetailedMovie,
     onItemClick: (DetailedMovie) -> Unit,
     modifier: Modifier = Modifier
@@ -187,7 +176,6 @@ fun TopMovieListItem(
                     style = MaterialTheme.typography.h6,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
-                //Spacer(Modifier.height(20.dp))
                 Column (
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.Bottom
@@ -278,101 +266,6 @@ fun MoviesList(
 
 @Composable
 expect fun HandleBackPress(onBackPressed: () -> Unit)
-
-//@Composable
-//fun MovieDetail(
-//    selectedMovie: DetailedMovie?,
-//    onBackPressed: () -> Unit,
-//    modifier: Modifier = Modifier
-//) {
-//    HandleBackPress(onBackPressed)
-//    val scrollState = rememberScrollState()
-//    Box(
-//        modifier = modifier
-//            .verticalScroll(state = scrollState)
-//    ) {
-//        Column {
-//            if (selectedMovie != null) {
-//                Box(
-//                    modifier = Modifier.padding(vertical = 0.dp),
-//                ) {
-//                    KamelImage(
-//                        modifier = Modifier
-//                            .fillMaxWidth()
-//                            .heightIn(
-//                                min = 300.dp,
-//                                max = 650.dp
-//                            ),
-//                        resource = asyncPainterResource(data = selectedMovie.poster),
-//                        contentDescription = null,
-//                        contentScale = ContentScale.Crop,
-//                        onLoading = {
-//                            Box(
-//                                modifier = Modifier
-//                                    .fillMaxSize(),
-//                                contentAlignment = Alignment.Center
-//                            ) {
-//                                LoadingScreen(modifier.size(100.dp))
-//                            }
-//                        },
-//                        onFailure = {
-//                            Box(
-//                                modifier = Modifier
-//                                    .fillMaxSize(),
-//                                contentAlignment = Alignment.Center
-//                            ) {
-//                                BrokenImageScreen(modifier.size(150.dp))
-//                            }
-//                        }
-//                    )
-//                    IconButton(
-//                        onClick = onBackPressed,
-//                        modifier = Modifier
-//                            .padding(32.dp)
-//                            .size(32.dp)
-//                            .background(
-//                                color = Color.Black.copy(alpha = 0.3f),
-//                                shape = CircleShape
-//                            )
-//                            .align(Alignment.TopStart)
-//                    ) {
-//                        Icon(
-//                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-//                            contentDescription = "Back",
-//                            tint = Color.White
-//                        )
-//                    }
-//                }
-//                Spacer(Modifier.height(20.dp))
-//                Text(
-//                    text = selectedMovie.title,
-//                    style = MaterialTheme.typography.h4,
-//                    fontWeight = FontWeight.Bold,
-//                    modifier = Modifier
-//                        .padding(horizontal = 16.dp),
-//                    color = MaterialTheme.colors.secondary
-//                )
-//                MovieDetailItem(selectedMovie.genre, MaterialTheme.typography.h6)
-//                MovieDetailItem(selectedMovie.released, MaterialTheme.typography.h6)
-//                MovieDetailItem(selectedMovie.runtime, MaterialTheme.typography.h6)
-//                MovieDetailItem(selectedMovie.language, MaterialTheme.typography.h6)
-//                MovieDetailItem(selectedMovie.country, MaterialTheme.typography.h6)
-//                Spacer(Modifier.height(10.dp))
-//                MovieDetailItem(selectedMovie.plot, MaterialTheme.typography.body1)
-//                Spacer(Modifier.height(10.dp))
-//                MovieDetailItem(
-//                    "Director: " + selectedMovie.director,
-//                    MaterialTheme.typography.h6
-//                )
-//                MovieDetailItem(
-//                    "Actors: " + selectedMovie.actors,
-//                    MaterialTheme.typography.h6
-//                )
-//                ShareMovieButton(selectedMovie.title, selectedMovie.plot)
-//            }
-//        }
-//    }
-//}
 
 @Composable
 fun MovieDetail(
@@ -578,20 +471,6 @@ fun MovieDetail(
 }
 
 @Composable
-fun MovieDetailItem(
-    text: String,
-    style: TextStyle
-) {
-    Text(
-        text = text,
-        style = style,
-        modifier = Modifier
-            .padding(horizontal = 16.dp),
-        color = MaterialTheme.colors.secondary
-    )
-}
-
-@Composable
 fun EditSearchField(
     value: String,
     onValueChanged: (String) -> Unit,
@@ -656,12 +535,5 @@ fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier) {
         Button(onClick = retryAction) {
             Text("retry")
         }
-    }
-}
-
-@Composable
-fun ShareMovieButton(movieTitle: String, movieDescription: String) {
-    Button(onClick = { shareMovie(movieTitle, movieDescription) }) {
-        Text("Share Movie")
     }
 }

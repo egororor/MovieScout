@@ -9,11 +9,11 @@ fun MovieDatabaseAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colors = if (darkTheme) DarkColorScheme else LightColorScheme  // ✅ Fully defined in commonMain
+    val colors = if (darkTheme) DarkColorScheme else LightColorScheme
 
     MaterialTheme(
         colors = colors,
-        typography = AppTypography,  // ✅ Defined in commonMain
+        typography = AppTypography,
         content = content
     )
 }

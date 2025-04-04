@@ -11,7 +11,6 @@ class NetworkMoviesRepository(
     private val moviesApiService: MoviesApiService,
     private val apiKey: String
 ) : MoviesRepository {
-    //tt1979320
     override suspend fun getMovies(searchText: String): SearchMoviesList {
         val detailedSearchResponse = SearchMoviesList(
             search = mutableListOf(),
