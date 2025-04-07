@@ -1,14 +1,7 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
-
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
-
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
-
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+For the AI generations, I mainly used chatGPT o3-mini-high as it is a reasoning model that is good at understanding code problems.
+The AI implemented the sharing logic and its access to the user interface (as a user, one can send the title and description of a movie to
+a friend by using the platform-specific sharing interface) for the app from scratch. Bridging was addressed through iterative, 
+prompt refinement, the model had issues with using correct dependencies for platform specific and common code spaces. Also, 
+I only had a boilerplate UI for the detailed movie page. But I wanted a fancy UI, so I found an example on the internet that I liked and
+asked the AI to create a UI like the one in the photo. It worked pretty well, I just had to change it a bit. The rest of the app was 
+written manually or with the help of the AI to solve some problems or understand some concepts, but no pure code generation.
